@@ -35,7 +35,8 @@ $saldo = $dompet ? $dompet['saldo'] : 0;
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
         .pesan-form { display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem; border-top: 1px solid #eee; padding-top: 1rem; }
-        .input-jumlah { width: 60px; padding: 0.4rem; border: 1px solid #ddd; border-radius: 4px; }
+        /* Perubahan di bagian ini: Lebar ditambah jadi 90px dan angka rata tengah */
+        .input-jumlah { width: 90px; padding: 0.4rem; border: 1px solid #ddd; border-radius: 4px; text-align: center; }
         .qty-btn { 
             background: #f3f4f6; border: 1px solid #ddd; padding: 0.4rem 0.7rem; 
             cursor: pointer; border-radius: 4px; font-weight: bold; transition: 0.2s;
@@ -91,8 +92,12 @@ $saldo = $dompet ? $dompet['saldo'] : 0;
                 <form action="proses_pesan.php" method="POST" class="pesan-form">
                     <input type="hidden" name="id_produk" value="<?= $item['id_bahan'] ?>">
                     <input type="hidden" name="harga_satuan" value="<?= $item['harga'] ?>">
+                    
                     <button type="button" class="qty-btn" onclick="changeQty(this, -1)">-</button>
-                    <input type="number" name="jumlah_beli" value="1" min="1" max="<?= $item['stok'] ?>" class="input-jumlah" readonly>
+                    
+                    <!-- PERBAIKAN: Atribut 'readonly' telah dihapus agar bisa diketik manual skala besar -->
+                    <input type="number" name="jumlah_beli" value="1" min="1" max="<?= $item['stok'] ?>" class="input-jumlah">
+                    
                     <button type="button" class="qty-btn" onclick="changeQty(this, 1)">+</button>
                     <button type="submit" class="btn-primary" style="padding: 0.4rem 1rem;">Pesan</button>
                 </form>
