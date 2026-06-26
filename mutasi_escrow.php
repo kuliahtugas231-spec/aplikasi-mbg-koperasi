@@ -19,7 +19,7 @@ $tab = $_GET['tab'] ?? 'Awaiting';
 
 $stmt = $db->prepare("SELECT e.*, p.status_logistik FROM escrow e 
                       JOIN pesanan p ON e.id_pesanan = p.id_pesanan 
-                      WHERE (CASE WHEN ? = 'Awaiting' THEN p.status_logistik = 'Pending' 
+                      WHERE (CASE WHEN ? = 'Awaiting' THEN p.status_logistik = 'Menunggu Verifikasi' 
                                   WHEN ? = 'Verified' THEN p.status_logistik = 'Verified' 
                                   ELSE e.status = 'Dicairkan' END) ORDER BY e.created_at DESC");
 $stmt->execute([$tab, $tab]);

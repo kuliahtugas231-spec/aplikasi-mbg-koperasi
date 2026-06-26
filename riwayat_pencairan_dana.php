@@ -57,7 +57,7 @@ try {
 
                 try {
                     // Total Pesanan Pending
-                    $stmt_pending = $db->query("SELECT COUNT(*) FROM pesanan WHERE status_logistik = 'Pending'");
+                    $stmt_pending = $db->query("SELECT COUNT(*) FROM pesanan WHERE status_logistik = 'Menunggu Verifikasi'");
                     $total_pending = (int)$stmt_pending->fetchColumn();
 
                     // Total Bahan Pangan Terverifikasi (jumlah komoditas yang sudah Verified)

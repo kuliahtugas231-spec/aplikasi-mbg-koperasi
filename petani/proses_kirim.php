@@ -45,17 +45,8 @@ try {
         $stmt_saldo_baru->execute([$id_petani, $total_harga]);
     }
 
-    // 4. LOGIKA BARU: Kurangi Saldo Anggaran Dapur
-    // Catatan: Sesuaikan nama tabel dan kolom saldo dapurmu. 
-    // Di bawah ini diasumsikan anggaran dapur disimpan di tabel 'dompet' atau tabel 'users' berdasarkan id_dapur.
-    // Jika anggaran dapur disimpan di tabel 'dompet', gunakan query ini:
-    $stmt_kurang_anggaran = $db->prepare("UPDATE dompet SET saldo = saldo - ? WHERE id_user = ?");
-    $stmt_kurang_anggaran->execute([$total_harga, $id_dapur]);
-
-    // NB: Jika anggarannya disimpan langsung di tabel 'users' (kolom anggaran/saldo), ganti baris di atas jadi:
-    // $stmt_kurang_anggaran = $db->prepare("UPDATE users SET anggaran = anggaran - ? WHERE id_user = ?");
-    // $stmt_kurang_anggaran->execute([$total_harga, $id_dapur]);
-
+    // 4. (Dihapus: Saldo dapur sudah dipotong saat mengajukan pesanan ke koperasi, 
+    // jadi tidak perlu dipotong lagi di sini untuk mencegah pemotongan ganda.)
 
     // 5. Ubah status dana di escrow menjadi 'Dicairkan'
     $stmt_escrow = $db->prepare("UPDATE escrow SET status = 'Dicairkan' WHERE id_pesanan = ?");

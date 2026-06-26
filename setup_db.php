@@ -63,7 +63,7 @@ try {
         id_dapur INT NOT NULL,
         jumlah_beli INT NOT NULL,
         total_harga DECIMAL(12,2) NOT NULL,
-        status_logistik ENUM('Pending', 'Verified', 'Selesai') DEFAULT 'Pending',
+        status_logistik ENUM('Pending', 'Menunggu Verifikasi', 'Verified', 'Selesai') DEFAULT 'Pending',
         status_pembayaran ENUM('Pending', 'Lunas') DEFAULT 'Pending',
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )";

@@ -9,7 +9,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Koperasi') {
 
 // Ambil data untuk Metrics
 $stmt_metrics = $db->query("SELECT 
-    COUNT(CASE WHEN status_logistik = 'Pending' THEN 1 END) as pending,
+    COUNT(CASE WHEN status_logistik = 'Menunggu Verifikasi' THEN 1 END) as pending,
     COUNT(CASE WHEN status_logistik = 'Verified' THEN 1 END) as verified,
     COALESCE(SUM(total_harga), 0) as total_cashflow 
     FROM pesanan");

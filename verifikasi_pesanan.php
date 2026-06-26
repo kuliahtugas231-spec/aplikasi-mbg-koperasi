@@ -13,7 +13,7 @@ $stmt = $db->query("SELECT p.*, k.nama_bahan, u.nama_lengkap as nama_dapur
                     FROM pesanan p 
                     JOIN katalog_bahan k ON p.id_produk = k.id_bahan 
                     JOIN users u ON p.id_dapur = u.id_user 
-                    WHERE p.status_logistik = 'Pending'
+                    WHERE p.status_logistik = 'Menunggu Verifikasi'
                     ORDER BY p.id_pesanan ASC");
 $pesanan_masuk = $stmt->fetchAll();
 ?>
